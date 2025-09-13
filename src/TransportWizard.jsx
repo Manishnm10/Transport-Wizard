@@ -86,6 +86,23 @@ const TransportWizard = () => {
     setCurrentStep('search');
   };
 
+  // NEW: jump to booking with a transport preselected
+  const startTransportBooking = (transport) => {
+    setBookingData(prev => ({
+      ...prev,
+      transport,
+      from: '',
+      to: '',
+      date: '',
+      passengers: 1
+    }));
+    setSelectedSeats([]);
+    setSelectedTransport(null);
+    setCurrentStep('search');
+    setCurrentPage('booking');
+    if (!user) setShowLogin(true); // show login but still navigate to booking
+  };
+
   const handleSeatSelection = (seatIndex, isWindow) => {
     if (selectedSeats.includes(seatIndex)) {
       setSelectedSeats(selectedSeats.filter(seat => seat !== seatIndex));
@@ -110,6 +127,12 @@ const TransportWizard = () => {
   };
 
   const confirmBooking = () => {
+    // NEW: enforce login before confirming a booking
+    if (!user) {
+      setShowLogin(true);
+      return;
+    }
+
     const newBooking = {
       id: Date.now(),
       ...bookingData,
@@ -260,15 +283,20 @@ const TransportWizard = () => {
           <div className="flex justify-center">
             <div className="grid grid-cols-4 gap-6 max-w-2xl">
               {[
-                { icon: '🚌', title: 'Bus' },
-                { icon: '🚂', title: 'Train' },
-                { icon: '✈️', title: 'Air Travel' },
-                { icon: '🚇', title: 'Metro' }
+                { icon: '🚌', title: 'Bus', key: 'bus' },
+                { icon: '🚂', title: 'Train', key: 'train' },
+                { icon: '✈️', title: 'Air Travel', key: 'plane' },
+                { icon: '🚇', title: 'Metro', key: 'metro' }
               ].map((feature, index) => (
-                <div key={index} className="bg-white p-6 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 aspect-square flex flex-col items-center justify-center min-w-[120px]">
+                <button
+                  key={index}
+                  onClick={() => startTransportBooking(feature.key)}
+                  aria-label={`Book ${feature.title}`}
+                  className="bg-white p-6 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 aspect-square flex flex-col items-center justify-center min-w-[120px] focus:outline-none focus:ring-2 focus:ring-blue-500"
+                >
                   <div className="text-4xl mb-3">{feature.icon}</div>
                   <h3 className="text-sm font-bold text-gray-800 text-center">{feature.title}</h3>
-                </div>
+                </button>
               ))}
             </div>
           </div>
@@ -588,7 +616,7 @@ const TransportWizard = () => {
                     <div className="grid md:grid-cols-2 gap-4 text-sm text-gray-600">
                       <div>
                         <p><span className="font-medium">Date:</span> {booking.date}</p>
-                        <p><span className="font-medium">Transport:</span> {booking.transport.charAt(0).toUpperCase() + booking.transport.slice(1)}</p>
+                        {/* Note: booking.transport is a route object */}
                         <p><span className="font-medium">Passengers:</span> {booking.passengers}</p>
                       </div>
                       <div>
@@ -645,7 +673,7 @@ const TransportWizard = () => {
                       {booking.transport.from} → {booking.transport.to}
                     </h3>
                     <div className="text-sm text-gray-600">
-                      <p>Date: {booking.date} | Transport: {booking.transport.charAt(0).toUpperCase() + booking.transport.slice(1)}</p>
+                      <p>Date: {booking.date}</p>
                       <p>Seats: {booking.seats.join(', ')} | Total: ₹{booking.total}</p>
                     </div>
                   </div>
@@ -872,7 +900,7 @@ const TransportWizard = () => {
       {/* Sidebar */}
       <div className={`fixed inset-y-0 left-0 z-30 w-64 bg-white shadow-2xl transform transition-transform duration-300 ${
         sidebarOpen ? 'translate-x-0' : '-translate-x-full'
-      } lg:translate-x-0 lg:static lg:shadow-none`}>
+      } lg:translate-x-0 lg:fixed lg:shadow-none`}>
         <div className="flex flex-col h-full">
           <div className="p-4 border-b border-gray-200">
             <div className="flex items-center justify-between">
