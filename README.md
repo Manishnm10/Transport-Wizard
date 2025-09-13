@@ -1,298 +1,268 @@
-# Transport Wizard
+# Transport Wizard 🚌✈️🚆🚇
 
-A web application for booking bus, rail, airways, and metro tickets online.
+> A comprehensive web application for booking bus, rail, airways, and metro tickets online with a unified experience.
 
-> This README is written in a docs-style format (docsify-like), with a clear structure, table of contents, and sections you can expand as the project grows. It’s designed to be developer- and contributor-friendly.
-
----
 
 ## Table of Contents
 
 - [Overview](#overview)
 - [Features](#features)
-- [Tech Stack](#tech-stack)
-- [Project Structure](#project-structure)
+- [Usage](#usage)
+- [Technology Stack](#technology-stack)
 - [Getting Started](#getting-started)
   - [Prerequisites](#prerequisites)
-  - [Clone](#clone)
-  - [Install](#install)
-  - [Environment Variables](#environment-variables)
-  - [Run](#run)
-  - [Build](#build)
-  - [Test & Lint](#test--lint)
-- [Usage](#usage)
-- [API (Optional)](#api-optional)
-- [Roadmap](#roadmap)
-- [Contributing](#contributing)
-- [Releases & Versioning](#releases--versioning)
-- [License](#license)
-- [Acknowledgments](#acknowledgments)
-- [Docsify (Optional Docs Site)](#docsify-optional-docs-site)
-- [Contact](#contact)
+  - [Installation](#installation)
+  - [Running the Application](#running-the-application)
 
----
 
 ## Overview
 
-Transport Wizard aims to simplify multi-modal travel planning and ticketing. Users can search, compare, and book across bus, rail, air, and metro with a unified experience.
+Transport Wizard is a modern, full-stack web application that revolutionizes the way users book transportation tickets. By providing a unified platform for multiple transport modes (bus, rail, air, and metro), users can easily compare options, select seats, and complete bookings all in one place.
 
-Repository: [Manishnm10/Transport-Wizard](https://github.com/Manishnm10/Transport-Wizard)
 
----
+### 🌟 Key Benefits
+- **Unified Experience**: One platform for all transport modes
+- **Time-Saving**: Compare multiple options quickly
+- **User-Friendly**: Intuitive interface with responsive design
+- **Secure**: Safe payment processing and data protection
 
 ## Features
 
-- Unified search across bus, rail, air, and metro
-- Filters by date, time, price, operator, and duration
-- Seat selection and booking flow
-- Booking management (view, cancel, resend confirmation)
-- Responsive UI for mobile and desktop
-- Extensible architecture for adding new transport providers
-- (Optional) Payment integration
-- (Optional) Authentication and user profiles
-- (Optional) Multi-language support
+### 🔍 Core Features
+- **Multi-Modal Search**: Search across bus, rail, air, and metro services
+- **Advanced Filtering**: Filter by date, time, price, operator, and duration
+- **Seat Selection**: Interactive seat maps for buses and trains
+- **Booking Management**: View, modify, and cancel existing bookings
+- **Real-time Updates**: Live status updates for schedules and availability
 
----
 
-## Tech Stack
+## Usage
 
-- Language: JavaScript
-- Typical Web App Stack (adjust to your actual setup):
-  - Frontend: HTML/CSS/JavaScript (or a framework like React/Vue)
-  - Backend: Node.js (Express or similar)
-  - Database: (e.g., PostgreSQL, MongoDB, or any service)
-  - Build/Tooling: npm or yarn
-  - Testing: Jest/Vitest (optional)
-  - Linting/Formatting: ESLint + Prettier (optional)
+### For End Users
 
-> Update this section with the precise libraries and versions you are using.
+1. **Search for Transportation**
+   - Enter origin and destination
+   - Select travel date and time
+   - Choose transport mode (bus/rail/air/metro)
 
----
+2. **Filter and Compare**
+   - Use filters to narrow down options
+   - Compare prices, duration, and amenities
+   - Read reviews and ratings
 
-## Project Structure
+3. **Book Your Trip**
+   - Select preferred option
+   - Choose seats (if applicable)
+   - Enter passenger details
+   - Complete payment
 
-Below is a suggested structure. Update this to match the actual repository layout.
+4. **Manage Bookings**
+   - View booking history
+   - Download tickets
+   - Cancel or modify bookings
 
+
+## Technology Stack
+
+### Frontend
 ```
-Transport-Wizard/
-├─ src/                      # Application source
-│  ├─ client/                # Frontend code (if applicable)
-│  ├─ server/                # Backend code (if applicable)
-│  ├─ components/            # Reusable UI or server modules
-│  ├─ routes/                # API or page routes
-│  ├─ services/              # Business logic, provider integrations
-│  ├─ utils/                 # Utilities and helpers
-│  └─ assets/                # Images, styles, fonts
-├─ public/                   # Static assets (if applicable)
-├─ tests/                    # Unit/integration/e2e tests
-├─ scripts/                  # Dev/CI scripts
-├─ .env.example              # Sample environment variables
-├─ package.json
-├─ README.md
-└─ LICENSE                   # Add a license (recommended)
+- HTML5/CSS3/JavaScript
+- Framework: React.js / Vue.js (specify your choice)
+- UI Library: Bootstrap / Material-UI / Tailwind CSS
+- State Management: Redux / Vuex
+- Build Tool: Webpack / Vite
 ```
 
----
+### Backend
+```
+- Runtime: Node.js
+- Framework: Express.js
+- Authentication: JWT
+- Validation: Joi / Yup
+- API Documentation: Swagger/OpenAPI
+```
+
+### Database
+```
+- Primary: MongoDB / PostgreSQL
+- Caching: Redis
+- Search: Elasticsearch (optional)
+```
+
+### DevOps & Tools
+```
+- Version Control: Git
+- Package Manager: npm / yarn
+- Testing: Jest / Mocha
+- Linting: ESLint + Prettier
+- CI/CD: GitHub Actions
+- Containerization: Docker
+- Deployment: AWS / Heroku / Vercel
+```
 
 ## Getting Started
 
 ### Prerequisites
 
-- Node.js 18+ (recommended)
-- npm 9+ (or yarn/pnpm)
+Ensure you have the following installed:
+- **Node.js** (v18.0.0 or higher)
+- **npm** (v9.0.0 or higher) or **yarn**
+- **Git** (latest version)
+- **MongoDB** / **PostgreSQL** (depending on your database choice)
+- **Redis** (for caching)
 
-Verify:
-```
-node -v
-npm -v
-```
-
-### Clone
-
-```
-git clone https://github.com/Manishnm10/Transport-Wizard.git
-cd Transport-Wizard
+#### Version Check
+```bash
+node --version
+npm --version
+git --version
 ```
 
-### Install
+### Installation
 
+1. **Clone the repository**
+   ```bash
+   git clone https://github.com/Manishnm10/Transport-Wizard.git
+   cd Transport-Wizard
+   ```
+
+2. **Install dependencies**
+   ```bash
+   # Install root dependencies
+   npm install
+   
+   # Install client dependencies
+   cd client
+   npm install
+   cd ..
+   
+   # Install server dependencies
+   cd server
+   npm install
+   cd ..
+   ```
+
+### Running the Application
+
+#### Development Mode
+
+**Option 1: Using concurrently (recommended)**
+```bash
+# Run both client and server simultaneously
+npm run dev
 ```
-npm install
-```
 
-### Environment Variables
-
-Create a `.env` file in the project root (use `.env.example` if available). Common variables you may need:
-
-```
-# Server
-NODE_ENV=development
-PORT=3000
-
-# Database (example)
-DATABASE_URL=postgres://user:pass@localhost:5432/transport_wizard
-
-# Auth (example)
-JWT_SECRET=change_me
-
-# Providers / APIs (examples)
-PAYMENT_PUBLIC_KEY=
-PAYMENT_SECRET_KEY=
-MAPS_API_KEY=
-```
-
-> Only include variables you actually use. Never commit real secrets.
-
-### Run
-
-Try the most common scripts (adjust based on your package.json):
-```
-# Development (hot reload if supported)
+**Option 2: Run separately**
+```bash
+# Terminal 1 - Backend server
+cd server
 npm run dev
 
-# Or standard start
+# Terminal 2 - Frontend client
+cd client
 npm start
 ```
 
-App should be available at:
-- http://localhost:3000 (or the PORT you configured)
-
-### Build
-
-If you have a build step:
-```
+#### Production Mode
+```bash
+# Build the application
 npm run build
+
+# Start production server
+npm start
 ```
 
-### Test & Lint
+#### Using Docker
+```bash
+# Build and run with Docker Compose
+docker-compose up --build
 
-```
-# Tests
-npm test
-
-# Lint
-npm run lint
-
-# Format
-npm run format
+# Run in detached mode
+docker-compose up -d
 ```
 
----
+**Application URLs:**
+- Frontend: [http://localhost:3000](http://localhost:3000)
+- Backend API: [http://localhost:5000](http://localhost:5000)
+- API Documentation: [http://localhost:5000/api/docs](http://localhost:5000/api/docs)
 
-## Usage
 
-1. Open the app in your browser.
-2. Enter origin, destination, and travel dates.
-3. Apply filters (time, price, operators).
-4. Choose seats (if applicable) and proceed to checkout.
-5. Complete booking and save your confirmation.
 
-> Add screenshots or GIFs in `docs/screenshots/` and reference them here.
+### Development Workflow
 
----
-
-## API (Optional)
-
-Document your API if this project exposes one.
-
-Example format:
-- GET `/api/v1/search` — Query available routes
-  - Query params: `from`, `to`, `date`, `mode`
-  - Response: `[{ id, operator, departAt, arriveAt, price, mode, ... }]`
-- POST `/api/v1/bookings` — Create a new booking
-  - Body: `{ tripId, passengers: [{ name, age }], paymentMethod }`
-  - Response: `{ bookingId, status, total }`
-- GET `/api/v1/bookings/:id` — Retrieve booking details
-- DELETE `/api/v1/bookings/:id` — Cancel a booking
-
-> Keep this section in sync with actual implementation and add authentication details if needed.
-
----
-
-## Roadmap
-
-- [ ] Define exact tech stack and architecture
-- [ ] Implement search across modes
-- [ ] Add seat selection flow
-- [ ] Integrate payment provider
-- [ ] User accounts and booking history
-- [ ] Validation, error handling, and logging
-- [ ] Tests (unit/integration/e2e)
-- [ ] CI/CD pipeline
-- [ ] i18n support
-- [ ] Performance and accessibility audits
-
----
-
-## Contributing
-
-Contributions are welcome!
-
-- Fork the repo
-- Create your feature branch: `git checkout -b feat/awesome-feature`
-- Commit changes: `git commit -m "feat: add awesome feature"`
-- Push to the branch: `git push origin feat/awesome-feature`
-- Open a Pull Request
-
-Please:
-- Write clear commit messages (Conventional Commits recommended)
-- Add/update tests and docs
-- Run `npm run lint` and `npm test` before opening a PR
-
----
-
-## Releases & Versioning
-
-- Follow semantic versioning (semver): `MAJOR.MINOR.PATCH`
-- Consider automating releases via GitHub Actions (optional)
-
----
-
-## License
-
-No license has been specified yet.
-
-- To open-source, add a license file (e.g., MIT, Apache-2.0) to the root.
-- If you need help choosing a license: https://choosealicense.com
-
----
-
-## Acknowledgments
-
-- Icons and assets from respective authors (if used)
-- Thanks to contributors and maintainers
-
----
-
-## Docsify (Optional Docs Site)
-
-If you want a docsify-powered documentation site in addition to this README:
-
-1. Install docsify CLI (locally or globally)
+1. **Fork the repository**
+   ```bash
+   # Click the "Fork" button on GitHub, then:
+   git clone https://github.com/your-username/Transport-Wizard.git
+   cd Transport-Wizard
+   git remote add upstream https://github.com/Manishnm10/Transport-Wizard.git
    ```
-   npm i docsify-cli -g
-   ```
-2. Initialize docs in a `docs/` folder
-   ```
-   docsify init ./docs
-   ```
-3. Configure `docs/index.html` and add your docs pages in Markdown.
-4. Preview locally
-   ```
-   docsify serve docs
-   ```
-5. Publish via GitHub Pages:
-   - Push the `docs/` folder to `main`.
-   - In repo Settings → Pages, set Source to `Deploy from a branch`, Folder: `/docs`.
 
-This README can be mirrored into `docs/README.md` or referenced from your docs structure.
+2. **Create a feature branch**
+   ```bash
+   git checkout -b feature/amazing-feature
+   # or
+   git checkout -b fix/bug-description
+   ```
 
----
+3. **Make your changes**
+   - Write clear, maintainable code
+   - Follow the existing code style
+   - Add tests for new functionality
+   - Update documentation as needed
 
-## Contact
+4. **Commit your changes**
+   ```bash
+   git add .
+   git commit -m "feat: add amazing new feature"
+   ```
+   
 
-- Author: @Manishnm10
-- Repository: https://github.com/Manishnm10/Transport-Wizard
-- Issues: https://github.com/Manishnm10/Transport-Wizard/issues
+5. **Push and create a Pull Request**
+   ```bash
+   git push origin feature/amazing-feature
+   ```
+   Then create a Pull Request on GitHub.
 
-If you’d like, I can open a Pull Request to add this README to your repository.
+### Code Style Guidelines
+
+#### JavaScript/Node.js
+- Use ES6+ features
+- Follow ESLint configuration
+- Use Prettier for formatting
+- Write JSDoc comments for functions
+
+#### React (if applicable)
+- Use functional components with hooks
+- Follow React best practices
+- Use PropTypes or TypeScript for type checking
+
+#### CSS
+- Use BEM methodology for naming
+- Mobile-first responsive design
+- Consistent spacing and typography
+
+### Pull Request Guidelines
+
+Before submitting a Pull Request:
+
+- ✅ Run tests: `npm test`
+- ✅ Run linting: `npm run lint`
+- ✅ Format code: `npm run format`
+- ✅ Update documentation if needed
+- ✅ Add tests for new features
+- ✅ Ensure CI passes
+- ✅ Write a clear PR description
+
+
+
+<div align="center">
+  <p>Made Manishnm10</p>
+  
+  [![Follow on GitHub](https://img.shields.io/github/followers/Manishnm10?style=social)](https://github.com/Manishnm10)
+  [![Star this repo](https://img.shields.io/github/stars/Manishnm10/Transport-Wizard?style=social)](https://github.com/Manishnm10/Transport-Wizard)
+  
+  <p>
+    <a href="#table-of-contents">⬆️ Back to Top</a>
+  </p>
+</div>
